@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Question{% endblock %}
+
+{% block content %}
+
+<style>
+.question-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.option-label {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.option-label:hover {
+    border-color: #0d6efd;
+    background: #f8fbff;
+}
+
+.option-label input {
+    transform: scale(1.2);
+}
+
+.timer-badge {
+    background: #ffeeba;
+    color: #856404;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+</style>
+
+<script>
+let totalTime = 30;
+
+function startTimer() {
+    let timer = document.getElementById("timer");
+    let interval = setInterval(function () {
+        timer.innerText = "⏳ " + totalTime + " sec";
+        totalTime--;
+
+        if (totalTime < 0) {
+            clearInterval(interval);
+            document.getElementById("quizForm").submit();
+        }
+    }, 1000);
+}
+
+window.onload = startTimer;
+</script>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h5 class="mb-0">Question {{ qno }} of {{ total }}</h5>
+                <small class="text-muted">Score: {{ score }}</small>
+            </div>
+            <span id="timer" class="timer-badge"></span>
+        </div>
+
+        <!-- Question Card -->
+        <div class="question-card">
+            <form method="POST" id="quizForm">
+
+                <h5 class="mb-4">
+                    {{ q.question }}
+                </h5>
+
+                <label class="option-label">
+                    <input type="radio" name="answer" value="A" required>
+                    <span>{{ q.option_a }}</span>
+                </label>
+
+                <label class="option-label">
+                    <input type="radio" name="answer" value="B">
+                    <span>{{ q.option_b }}</span>
+                </label>
+
+                <label class="option-label">
+                    <input type="radio" name="answer" value="C">
+                    <span>{{ q.option_c }}</span>
+                </label>
+
+                <label class="option-label">
+                    <input type="radio" name="answer" value="D">
+                    <span>{{ q.option_d }}</span>
+                </label>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                        Next Question →
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

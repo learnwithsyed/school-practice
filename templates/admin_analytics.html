@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #333;
+            color: white;
+        }
+        a.btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📊 Admin Analytics Dashboard</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Students</h3>
+        <p><b>{{ total_students }}</b></p>
+    </div>
+
+    <div class="card">
+        <h3>Most Attempted Class</h3>
+        {% if most_attempted_class %}
+            <p>
+                Class {{ most_attempted_class["class"] }}
+                ({{ most_attempted_class["cnt"] }} attempts)
+            </p>
+        {% else %}
+            <p>No data yet</p>
+        {% endif %}
+    </div>
+</div>
+
+<h3>🔥 Most Difficult Questions</h3>
+<table>
+    <tr>
+        <th>Question</th>
+        <th>Attempts</th>
+        <th>Wrong</th>
+    </tr>
+    {% for q in difficult_questions %}
+    <tr>
+        <td>{{ q["question"] }}</td>
+        <td>{{ q["attempted"] }}</td>
+        <td>{{ q["wrong"] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>📈 Daily Traffic (Last 7 Days)</h3>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Visits</th>
+    </tr>
+    {% for d in daily_traffic %}
+    <tr>
+        <td>{{ d["visit_date"] }}</td>
+        <td>{{ d["visits"] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ url_for('admin_dashboard') }}" class="btn">⬅ Back to Dashboard</a>
+
+</body>
+</html>

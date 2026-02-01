@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Database (NEVER upload)
+questions.db
+
+# Uploads
+uploads/
+
+# Environment variables
+.env
+.env/
+.venv/
+venv/
+
+# Flask instance
+instance/
+
+# Logs
+*.log
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temp / backup
+*.bak
+*.swp

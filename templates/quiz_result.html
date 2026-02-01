@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Result{% endblock %}
+
+{% block content %}
+
+<style>
+.result-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.score-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0d6efd, #5a8dee);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 auto 15px;
+}
+
+.result-table {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.result-table th {
+    background: #f1f5ff;
+    font-weight: 600;
+}
+
+.badge-correct {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-wrong {
+    background: #f8d7da;
+    color: #721c24;
+}
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+
+        <!-- Result Summary -->
+        <div class="result-card mb-4">
+            <h4 class="mb-3"> Quiz Completed! ❤️ </h4>
+
+            <div class="score-circle">
+                {{ score }} / {{ total }}
+            </div>
+
+            <p class="text-muted mb-0">
+                Keep practicing to improve your score 🚀
+            </p>
+        </div>
+
+        <!-- Answer Review -->
+        <h5 class="mb-3">📘 Answer Review</h5>
+
+        <div class="table-responsive result-table mb-4">
+            <table class="table table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Question</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                        <th>Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for a in answers %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ a.question }}</td>
+                        <td>
+                            {% if a.selected == a.correct %}
+                                <span class="badge badge-correct px-2 py-1">
+                                    {{ a.selected }}
+                                </span>
+                            {% else %}
+                                <span class="badge badge-wrong px-2 py-1">
+                                    {{ a.selected }}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge badge-correct px-2 py-1">
+                                {{ a.correct }}
+                            </span>
+                        </td>
+                        <td>{{ a.explanation }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="card shadow-sm border-0 p-4">
+            <h6 class="text-center mb-3">
+                What would you like to do next?
+            </h6>
+
+            <div class="d-flex flex-column flex-md-row gap-3">
+                <a href="{{ url_for('index') }}"
+                   class="btn btn-success btn-lg rounded-pill w-100">
+                    ▶ Start New Quiz
+                </a>
+
+                <a href="{{ url_for('feedback') }}"
+                   class="btn btn-outline-primary btn-lg rounded-pill w-100">
+                    💬 Send Feedback
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+Quiz Completed ❤️

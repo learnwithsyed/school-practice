@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback Submitted{% endblock %}
+
+{% block content %}
+
+<style>
+.success-card {
+    max-width: 420px;
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.success-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #28a745, #43d17a);
+    color: #fff;
+    font-size: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.success-card h4 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.success-card p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+</style>
+
+<div class="success-card">
+
+    <div class="success-icon">✓</div>
+
+    <h4>Thank You!</h4>
+    <p>
+        Your feedback has been submitted successfully.  
+        We truly appreciate your time and suggestions ❤️
+    </p>
+
+    <div class="success-actions">
+        <a href="{{ url_for('index') }}"
+           class="btn btn-success btn-lg rounded-pill">
+            ▶ Start New Quiz
+        </a>
+
+        <a href="{{ url_for('feedback') }}"
+           class="btn btn-outline-secondary rounded-pill">
+            ✍ Submit Another Feedback
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,216 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body {
+    background-color: #f4f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: #2c7be5;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 5px;
+}
+
+/* MAIN */
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* SELECTION BOX & QUESTION BOX */
+.selection-box, .question-box {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* HEADINGS */
+.selection-box h2, .question-box h2 {
+    margin-bottom: 15px;
+    color: #2c7be5;
+}
+
+/* FORM ELEMENTS */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+button {
+    background-color: #2c7be5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1a5fc4;
+}
+
+/* OPTIONS */
+.options label {
+    display: block;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.options input {
+    margin-right: 10px;
+}
+
+/* RESULT */
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* TABLES */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    word-break: break-word;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #2c7be5;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .options label {
+        font-size: 14px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 6px;
+    }
+    
+    .selection-box, .question-box {
+        padding: 15px;
+    }
+}
+
+.practice-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+.practice-card {
+    background: #ffffff;
+    max-width: 480px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.practice-form .form-group {
+    margin-bottom: 18px;
+}
+
+.practice-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.practice-form select,
+.practice-form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #0d6efd, #4f8cff);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(13,110,253,0.35);
+}

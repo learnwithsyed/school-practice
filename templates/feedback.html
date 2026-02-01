@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h4 class="mb-3">📝 Share Your Feedback</h4>
+
+        <form method="POST">
+            <textarea name="message"
+                      class="form-control"
+                      rows="5"
+                      placeholder="What do you like? What should be improved?"
+                      required></textarea>
+
+            <button class="btn btn-primary mt-3">Submit Feedback</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="alert alert-success mt-3">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}

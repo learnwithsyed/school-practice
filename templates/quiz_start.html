@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Start Practice{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7 col-sm-10">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+
+                <h3 class="text-center mb-2">🎯 Start Practice</h3>
+                <p class="text-center text-muted mb-4">
+                    Select your class and subject to begin
+                </p>
+
+                <form method="POST" action="/start-quiz">
+
+                    <!-- Class -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Select Class</label>
+                        <select name="class" class="form-select" required>
+                            <option value="">-- Choose Class --</option>
+                            {% for i in range(1,11) %}
+                                <option value="{{ i }}">Class {{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Select Subject</label>
+                        <select name="subject" class="form-select" required>
+                            <option value="">-- Choose Subject --</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Maths">Maths</option>
+                        </select>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                            ▶ Start Practice
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

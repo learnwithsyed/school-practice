@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Webmaster Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main style="max-width:400px;margin:auto;background:white;padding:20px;margin-top:50px;border-radius:8px;">
+<h2 style="text-align:center;">Webmaster Login</h2>
+<form method="POST">
+<input name="username" placeholder="Username" required style="width:100%;padding:10px;margin:10px 0;">
+<input type="password" name="password" placeholder="Password" required style="width:100%;padding:10px;margin:10px 0;">
+<button type="submit">Login</button>
+
+{% if error %}
+<p style="color:red;text-align:center;">{{ error }}</p>
+{% endif %}
+</form>
+</main>
+</body>
+</html>

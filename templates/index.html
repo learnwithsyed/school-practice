@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Start Practice{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-11">
+
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+
+                <h2 class="text-center mb-2">🎯 Start Practice</h2>
+                <p class="text-center text-muted mb-4">
+                    Practice Maths & Computer Science (Class 1–10)
+                </p>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                  {% endfor %}
+                {% endwith %}
+
+                <form method="POST" action="{{ url_for('start_quiz') }}">
+
+                    <!-- Class -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Select Class</label>
+                        <select name="class" class="form-select" required>
+                            <option value="">-- Choose Class --</option>
+                            {% for i in range(1,11) %}
+                                <option value="{{ i }}">Class {{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Select Subject</label>
+                        <select name="subject" class="form-select" required>
+                            <option value="">-- Choose Subject --</option>
+                            <option value="Maths">Maths</option>
+                            <option value="Computer">Computer</option>
+                        </select>
+                    </div>
+
+                    <!-- Difficulty -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Select Difficulty</label>
+                        <select name="difficulty" class="form-select" required>
+                            <option value="">-- Choose Difficulty --</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <!-- Number of Questions -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Number of Questions</label>
+                        <input type="number" name="questions" class="form-control"
+                               value="5" min="1" max="50" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                            ▶ Start Practice
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
